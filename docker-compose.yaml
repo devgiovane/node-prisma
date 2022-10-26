@@ -1,0 +1,21 @@
+version: '3'
+services:
+    database:
+        container_name: database
+        image: postgres:latest
+        restart: always
+        environment:
+            POSTGRES_DB: ignite
+            POSTGRES_USER: admin
+            POSTGRES_PASSWORD: admin
+        volumes:
+            - postgres:/data/postgres
+        ports:
+            - "5432:5432"
+        networks:
+            - postgres
+networks:
+    postgres:
+        driver: bridge
+volumes:
+    postgres:
